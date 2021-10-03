@@ -21,7 +21,7 @@ class Home extends PureComponent {
   };
 
   async componentDidMount() {
-    fetch("http://18.189.188.229:8000/listings/listingsEp/listings-all")
+    fetch("http://3.135.209.144:8000/ep/hostels-all")
       .then((res) => res.json())
       .then((resJson) => {
         this.setState({ Listings: resJson, loading: false });
