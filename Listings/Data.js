@@ -37,9 +37,9 @@ export default Data = ({ route }) => {
   const seater = route.params.seater;
   const bathrooms = route.params.bathrooms;
   const hostel_type = route.params.hostel_type;
-  const food_facility = route.params.food_facility;
-  const laundary_facility = route.params.laundary_facility;
-  const internet_facility = route.params.internet_facility;
+  // const food_facility = route.params.food_facility;
+  // const laundary_facility = route.params.laundary_facility;
+  // const internet_facility = route.params.internet_facility;
   const photo_main = route.params.photo_main;
   const photo_1 = route.params.photo_1;
   const photo_2 = route.params.photo_2;
