@@ -163,25 +163,7 @@ export default RegistrationUser = () => {
               SUBMIT
             </Text>
           </TouchableOpacity>
-          {/* ****** */}
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              fetch("http://3.135.209.144:8000/ep/register_user")
-                .then((res) => res.json())
-                .then((resJson) => {
-                  alert(JSON.stringify(resJson.data));
-                })
 
-                .catch((error) => {
-                  console.error(error);
-                });
-            }}
-          >
-            <Text style={{ fontSize: 16, fontWeight: "bold", color: "#fff" }}>
-              verify
-            </Text>
-          </TouchableOpacity>
           {/*  */}
         </View>
       </View>
