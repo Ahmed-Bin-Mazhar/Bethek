@@ -19,6 +19,14 @@ export default RegistrationUser = () => {
   const [passward, setpassward] = useState("");
   const [verifypassward, setverifypassward] = useState("");
   const [email, setemail] = useState("");
+
+  // const data ={
+  //   full_name:{fullname},
+  //   username:{username},
+  //   password:{passward},
+  //   email:{email}
+  // }
+
   return (
     <ScrollView style={styles.container}>
       <View
