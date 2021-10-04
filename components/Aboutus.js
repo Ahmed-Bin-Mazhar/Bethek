@@ -50,10 +50,13 @@ class Aboutus extends Component {
               lock the idea.
             </Text>
           </View>
+
+          {/*
+
           <View>
             <Text style={styles.Heading}>Meet Our Team</Text>
           </View>
-          <View style={styles.container}>
+            <View style={styles.container}>
             <Image
               style={styles.picture}
               source={require("../Team-Img/dr_aamer.png")}
@@ -90,7 +93,9 @@ class Aboutus extends Component {
             </Text>
           </View>
 
-          {/* Footer */}
+          */}
+
+          {/* Footer 
           <View style={styles.footer}>
             <MaterialCommunityIcons name="home" size={40} color="#fff" />
             <Text
@@ -109,6 +114,11 @@ class Aboutus extends Component {
 
           <View style={styles.mainfooter}>
             <Text style={{ color: "#fff" }}>Copyright © 2021 AAA PAK</Text>
+          </View>
+              */}
+
+          <View style={{ paddingTop: 27 }}>
+            <Footer />
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -140,12 +150,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    borderWidth: 0,
     fontSize: 16,
     borderBottomWidth: 0,
     borderTopWidth: 0,
     justifyContent: "center",
     alignItems: "center",
+    flexWrap: "wrap",
   },
 
   Heading: {
@@ -155,6 +165,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     justifyContent: "center",
     fontWeight: "bold",
+    padding: 25,
   },
   title: {
     textAlign: "center",
