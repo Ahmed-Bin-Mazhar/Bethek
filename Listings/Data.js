@@ -73,7 +73,9 @@ export default Data = ({ route }) => {
             <Ionicons name="location" size={22} color="#000000" style={{}}>
               <Text style={{ fontSize: 16 }}>{address}</Text>
             </Ionicons>
-            <Text style={styles.address}>{city}</Text>
+            <Text style={styles.address}>
+              {city} {location}
+            </Text>
           </View>
 
           <Text style={styles.price}>
@@ -136,61 +138,23 @@ export default Data = ({ route }) => {
                 {bathrooms}
               </Text>
             </View>
-            {/* <View
-              style={{ flexDirection: "row", justifyContent: "space-evenly" }}
-            >
-              <MaterialCommunityIcons
-                name="food"
-                size={20}
-                color="#000000"
-                style={{ position: "absolute", left: 70 }}
-              >
-                {" "}
-                Messing{" "}
-              </MaterialCommunityIcons>
-
-              <Text style={{ fontSize: 18 }}>
-                {"                      "}| {"   "}
-                {food_facility}
-              </Text>
-            </View>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-evenly" }}
-            >
-              <MaterialCommunityIcons
-                name="washing-machine"
-                size={20}
-                color="#000000"
-                style={{ position: "absolute", left: 70 }}
-              >
-                {" "}
-                Laundary
-              </MaterialCommunityIcons>
-
-              <Text style={{ fontSize: 18 }}>
-                {"                      "}| {"   "}
-                {laundary_facility}
-              </Text>
-            </View>
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-evenly" }}
-            >
-              <MaterialCommunityIcons
-                name="wifi"
-                size={20}
-                color="#000000"
-                style={{ position: "absolute", left: 70 }}
-              >
-                {" "}
-                Internet{"   "}
-              </MaterialCommunityIcons>
-
-              <Text style={{ fontSize: 18 }}>
-                {"                      "}| {"  "} {internet_facility}
-              </Text>
-            </View> */}
           </View>
         </View>
+        {/*  */}
+
+        <View style={{ padding: 15 }} />
+        <View style={styles.details}>
+          <Text style={{ fontSize: 20, fontWeight: "700" }}>Utilities : </Text>
+          <View
+            style={{
+              flexDirection: "column",
+              paddingLeft: 25,
+            }}
+          >
+            <Text>{utilities}</Text>
+          </View>
+        </View>
+        {/*  */}
         {/* Discription */}
         <View style={{ padding: 15 }} />
         <View style={styles.discription}>
