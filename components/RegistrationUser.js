@@ -13,7 +13,7 @@ import {
 import { Feather } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 
-export default RegistrationUser = () => {
+export default RegistrationUser = ({ navigation }) => {
   const [fullname, setfullname] = useState("");
   const [username, setusername] = useState("");
   const [passward, setpassward] = useState("");
@@ -154,6 +154,7 @@ export default RegistrationUser = () => {
                 } catch (e) {
                   console.log(e);
                 }
+                navigation.navigate("Home");
               } else {
                 Alert.alert("Your passward is not valid");
               }
