@@ -36,15 +36,7 @@ class Home extends PureComponent {
         <View>
           <ScrollView>
             <View style={styles.header}>
-              <MaterialCommunityIcons
-                name="home"
-                size={40}
-                color="#fff"
-                style={styles.icon}
-              />
-              <Text style={styles.TopText}>
-                find accomodation of your choice
-              </Text>
+              <Text style={styles.TopText}>Search for Hostels</Text>
 
               {/* Search bar    */}
 
@@ -60,19 +52,18 @@ class Home extends PureComponent {
                   padding: 5,
                   color: "#A6A6A6",
                   flexDirection: "row",
-                  justifyContent: "space-evenly",
                 }}
               >
-                <Text>"Search for Accomodations"</Text>
                 <EvilIcons
                   name="search"
                   size={26}
                   color="#A6A6A6"
                   style={{
-                    justifyContent: "flex-end", //Centered horizontally
+                    justifyContent: "flex-start",
                     alignItems: "center",
                   }}
                 />
+                <Text style={{ paddingLeft: 40 }}>Type here .........</Text>
               </TouchableOpacity>
 
               {/* Search Bar The End  */}
