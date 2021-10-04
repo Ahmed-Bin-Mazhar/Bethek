@@ -20,26 +20,18 @@ import GridImageView from "react-native-grid-image-viewer";
 import GridImageViewer from "react-native-grid-image-viewer";
 
 export default Data = ({ route }) => {
-  //   const ListingInfo = route.prams.title;
-  //   return <Text>{JSON.stringify(ListingInfo, null, 2)}</Text>;
-
-  //   // const title = useNavigationParam("name");
-  //   // return <View>name is {name}</View>;
-
   const id = route.params.id;
   const title = route.params.title;
+  const location = route.params.location;
   const address = route.params.address;
   const city = route.params.city;
-  const Nearby_University = route.params.Nearby_University;
   const zipcode = route.params.zipcode;
   const description = route.params.description;
   const price = route.params.price;
   const seater = route.params.seater;
   const bathrooms = route.params.bathrooms;
   const hostel_type = route.params.hostel_type;
-  // const food_facility = route.params.food_facility;
-  // const laundary_facility = route.params.laundary_facility;
-  // const internet_facility = route.params.internet_facility;
+  const available = route.params.available;
   const photo_main = route.params.photo_main;
   const photo_1 = route.params.photo_1;
   const photo_2 = route.params.photo_2;
@@ -49,7 +41,9 @@ export default Data = ({ route }) => {
   const photo_6 = route.params.photo_6;
   const is_published = route.params.is_published;
   const list_date = route.params.list_date;
-  const realtor = route.params.realtor;
+  const owner = route.params.owner;
+  const nearby_universities = route.params.nearby_universities;
+  const utilities = route.params.utilities;
 
   return (
     <ScrollView>
@@ -94,7 +88,7 @@ export default Data = ({ route }) => {
           <Text style={{ fontSize: 20, fontWeight: "700" }}>
             Nearby Institutions:
           </Text>
-          <Text style={{ fontSize: 16 }}>{Nearby_University}</Text>
+          <Text style={{ fontSize: 16 }}>{nearby_universities}</Text>
         </View>
         {/* Details */}
         <View style={{ padding: 15 }} />
@@ -142,7 +136,7 @@ export default Data = ({ route }) => {
                 {bathrooms}
               </Text>
             </View>
-            <View
+            {/* <View
               style={{ flexDirection: "row", justifyContent: "space-evenly" }}
             >
               <MaterialCommunityIcons
@@ -194,7 +188,7 @@ export default Data = ({ route }) => {
               <Text style={{ fontSize: 18 }}>
                 {"                      "}| {"  "} {internet_facility}
               </Text>
-            </View>
+            </View> */}
           </View>
         </View>
         {/* Discription */}
