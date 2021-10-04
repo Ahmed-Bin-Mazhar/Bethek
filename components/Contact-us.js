@@ -1,30 +1,49 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, ScrollView, Button } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Footer from "./Footer";
+import { Ionicons } from "@expo/vector-icons";
 
 export default class ContactUs extends Component {
   render() {
     return (
-      <View>
-        <ScrollView>
-          <View>
-            {/* Give Us a Call */}
-            <View style={styles.container}>
-              <Text style={styles.heading}>GIVE US A CALL</Text>
-              <Text style={styles.text}>
-                Feel free to give us a call on following numbers{" "}
-              </Text>
-              <View style={styles.details}>
-                <Text style={styles.textnumber}>HelpLine</Text>
-                <Text style={styles.contact}>+92 111 111 111</Text>
-                <Text style={styles.textnumber}>Main Office</Text>
-                <Text style={styles.contact}>+92 (051) 151 514</Text>
-                <Text style={styles.textnumber}>Email</Text>
-                <Text style={styles.contact}>bethek.contact@gmail.com</Text>
-              </View>
-            </View>
-            {/* or walk in */}
-            <View style={styles.container}>
+      <ScrollView>
+        <View style={styles.Icon}>
+          <MaterialCommunityIcons name="home" size={150} color="black" />
+        </View>
+
+        <View style={styles.page}>
+          {/* Give Us a Call */}
+          <View style={styles.container1}>
+            <Text style={styles.heading}>GIVE US A CALL</Text>
+            <Text style={styles.text}>We are happy to help you out</Text>
+          </View>
+
+          <View style={styles.call}>
+            <Ionicons
+              name="md-call-sharp"
+              size={24}
+              color="blue"
+              paddingBottom="20"
+            >
+              {" "}
+              +92334-1834367
+            </Ionicons>
+          </View>
+          <View style={styles.address}>
+            <Ionicons name="home" size={20} color="green">
+              {" "}
+              ORIC Office H-block room-12
+            </Ionicons>
+          </View>
+          <View style={styles.mail}>
+            <Ionicons name="mail" size={20} color="red">
+              bethek.contact@gmail.com{" "}
+            </Ionicons>
+          </View>
+
+          {/* or walk in 
+            <View style={styles.container2}>
               <Text style={styles.heading}> Or Just Walk In</Text>
               <Text style={styles.text}>
                 If you need to mail any advertising literature then please use
@@ -39,40 +58,67 @@ export default class ContactUs extends Component {
                 <Text style={styles.contact}>LMNO 021</Text>
               </View>
             </View>
-          </View>
-        </ScrollView>
-      </View>
+            */}
+        </View>
+
+        <View style={{ paddingTop: 50 }}>
+          <Footer />
+        </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  contact: {
-    fontWeight: "500",
-    fontSize: 20,
-    textAlign: "center",
+  call: {
+    justifyContent: "space-evenly",
+    flex: 1,
+    paddingTop: 88,
   },
-  details: {
+  address: {
+    justifyContent: "space-evenly",
+    flex: 1,
+    paddingTop: 30,
+  },
+  mail: {
+    justifyContent: "space-evenly",
+    flex: 1,
+    paddingTop: 30,
+  },
+
+  Icon: {
+    justifyContent: "center",
+    textAlign: "center",
+    paddingTop: 30,
     flexDirection: "column",
+    paddingBottom: 30,
+    alignItems: "center",
   },
-  textnumber: {
-    textAlign: "center",
-    fontWeight: "900",
-    fontSize: 24,
+  page: {
+    padding: 10,
+    flex: 1,
+    paddingBottom: 5,
   },
   text: {
-    textAlign: "left",
+    textAlign: "center",
     fontWeight: "300",
     fontSize: 20,
   },
   heading: {
-    textAlign: "left",
-    fontWeight: "900",
-    fontSize: 24,
+    textAlign: "center",
+    fontSize: 30,
+    fontWeight: "bold",
   },
-  container: {
-    borderBottomWidth: 3,
+  container1: {
+    paddingTop: 40,
+    paddingBottom: 20,
+  },
+  container2: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    borderBottomWidth: 1,
     borderColor: "#CBCAD1",
+    backgroundColor: "#f0f8ff",
   },
   title: {
     textAlign: "center",
