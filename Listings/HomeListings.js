@@ -93,7 +93,7 @@ const HomeListings = ({
                 {/* <MaterialCommunityIcons name="food" size={24} color="#000000" />: */}
                 <Ionicons name="fast-food-outline" size={24} color="#000000" />
                 {"  "}
-                {food_facility}
+                {/* {food_facility} */}
               </Text>
             </View>
             <View style={{ flexDirection: "row" }}>
@@ -104,12 +104,12 @@ const HomeListings = ({
                   color="#000000"
                 />
                 {"  "}
-                {laundary_facility}
+                {/* {laundary_facility} */}
               </Text>
               <Text style={{ color: "#000000", paddingLeft: 62 }}>
                 <MaterialCommunityIcons name="wifi" size={24} color="#000000" />
                 {"  "}
-                {internet_facility}
+                {/* {internet_facility} */}
               </Text>
             </View>
           </View>
