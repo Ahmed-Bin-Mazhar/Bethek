@@ -73,6 +73,7 @@ export default RegistrationUser = ({ navigation }) => {
           <View>
             <Feather name="user" size={20} color="black">
               <Text> Name:</Text>
+              <Text style={{ color: "red" }}>*</Text>
             </Feather>
             <TextInput
               placeholder="Enter Name"
@@ -85,6 +86,7 @@ export default RegistrationUser = ({ navigation }) => {
           <View>
             <Feather name="user" size={20} color="black">
               <Text> Username:</Text>
+              <Text style={{ color: "red" }}>*</Text>
             </Feather>
             <TextInput
               placeholder="Enter Username"
@@ -97,6 +99,7 @@ export default RegistrationUser = ({ navigation }) => {
           <View>
             <Fontisto name="email" size={20} color="black">
               <Text> Email:</Text>
+              <Text style={{ color: "red" }}>*</Text>
             </Fontisto>
             <TextInput
               placeholder="Enter Email"
@@ -110,6 +113,7 @@ export default RegistrationUser = ({ navigation }) => {
           <View>
             <Feather name="lock" size={20} color="black">
               <Text> Password:</Text>
+              <Text style={{ color: "red" }}>*</Text>
             </Feather>
             <TextInput
               placeholder="Enter Password"
@@ -122,6 +126,7 @@ export default RegistrationUser = ({ navigation }) => {
           <View>
             <Feather name="lock" size={20} color="black">
               <Text> Verify Password:</Text>
+              <Text style={{ color: "red" }}>*</Text>
             </Feather>
             <TextInput
               placeholder="Verify Password"

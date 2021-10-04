@@ -12,6 +12,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Footer from "../components/Footer";
 
 class Search extends Component {
+  state = {
+    Listings: [],
+
+    loading: true,
+  };
+
   render() {
     return (
       <SafeAreaView>
@@ -137,7 +143,30 @@ class Search extends Component {
                 <Button
                   color="#10284e"
                   title="SUBMIT"
-                  onPress={() => this.props.navigation.navigate("SearchData")}
+                  onPress={() => {
+                    try {
+                      fetch("http://3.135.209.144:8000/ep/hostels-all", {
+                        method: "GET",
+                        mode: "no-cors",
+                        headers: {
+                          Accept: "application/json",
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.parse({
+                          title: "IFTI HOSTEL",
+                          city: "ISLAMABAD",
+                          price: "55555",
+                          bathrooms: "5",
+                        })
+                          .then((res) => res.json())
+                          .then((resJson) => {
+                            alert(resJson);
+                          }),
+                      });
+                    } catch (e) {
+                      console.log(e);
+                    }
+                  }}
                 />
               </View>
             </View>
