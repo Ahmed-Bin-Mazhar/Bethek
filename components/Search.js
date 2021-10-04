@@ -33,6 +33,7 @@ class Search extends Component {
                     borderColor: "darkblue",
                     borderWidth: 1,
                     paddingRight: 20,
+                    borderRadius: 15,
                   }}
                 />
               </View>
@@ -46,11 +47,13 @@ class Search extends Component {
                   style={{ height: 70 }}
                   placeholder="Type here..."
                   alignItems="center"
+                  justifyContent="center"
                   style={{
                     height: 40,
                     borderColor: "darkblue",
                     borderWidth: 1,
                     paddingRight: 20,
+                    borderRadius: 15,
                   }}
                 />
               </View>
@@ -69,6 +72,7 @@ class Search extends Component {
                     borderColor: "darkblue",
                     borderWidth: 1,
                     paddingRight: 20,
+                    borderRadius: 15,
                   }}
                 />
               </View>
@@ -87,6 +91,7 @@ class Search extends Component {
                     borderColor: "darkblue",
                     borderWidth: 1,
                     paddingRight: 20,
+                    borderRadius: 15,
                   }}
                 />
               </View>
@@ -104,6 +109,7 @@ class Search extends Component {
                     borderColor: "darkblue",
                     borderWidth: 1,
                     paddingRight: 20,
+                    borderRadius: 15,
                   }}
                 />
               </View>
@@ -122,6 +128,7 @@ class Search extends Component {
                     borderColor: "darkblue",
                     borderWidth: 1,
                     paddingRight: 20,
+                    borderRadius: 15,
                   }}
                 />
               </View>
@@ -155,6 +162,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     padding: 10,
     paddingTop: 60,
+    borderRadius: 70,
   },
   body2: {
     alignItems: "stretch",

@@ -51,12 +51,12 @@ const CustomDrawer = (props) => {
           }}
         >
           <Image
-            source={require("../Team-Img/ahmed.png")}
+            source={require("../Team-Img/dr_aamer.png")}
             style={{ width: 60, height: 60, borderRadius: 30 }}
           />
           <View>
             <Text style={{ paddingTop: 5, color: "#fff" }}>
-              Ahmed Bin Mazhar
+              Dr Aamer Iqbal Bhatti
             </Text>
           </View>
         </View>
@@ -70,7 +70,7 @@ const CustomDrawer = (props) => {
           right: 0,
           left: 0,
           bottom: 50,
-          backgroundColor: "#10284e",
+          backgroundColor: "#5f9ea0",
           padding: 30,
           flexDirection: "column",
 

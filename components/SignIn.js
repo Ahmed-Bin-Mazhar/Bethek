@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Footer from "./Footer";
+import { Feather } from "@expo/vector-icons";
 
 const SignIn = ({ navigation }) => {
   return (
@@ -19,45 +20,74 @@ const SignIn = ({ navigation }) => {
           <MaterialCommunityIcons name="home" size={150} color="black" />
         </View>
 
-        <View style={styles.email}>
-          <Text style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 25 }}>
-            ENTER YOUR EMAIL:
-          </Text>
-          <TextInput
-            style={{ height: 70 }}
-            placeholder="Type here..."
-            alignItems="center"
-            style={{
-              height: 40,
-              borderColor: "gray",
-              borderWidth: 3,
-              paddingRight: 20,
-            }}
-          />
+        <View style={styles.name}>
+          <View>
+            <Feather
+              name="user"
+              size={20}
+              color="black"
+              paddingTop="30"
+              alignContent="center"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Text> User Name:</Text>
+            </Feather>
+            <TextInput placeholder="Enter UserName" style={styles.TextInput} />
+          </View>
         </View>
 
         <View style={styles.password}>
-          <Text style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 25 }}>
-            ENTER YOUR PASSWORD:
+          <View>
+            <Feather name="lock" size={20} color="black">
+              <Text> Password:</Text>
+            </Feather>
+            <TextInput placeholder="Enter Password" style={styles.TextInput} />
+          </View>
+        </View>
+      </View>
+      <View style={styles.signInButton}>
+        <TouchableOpacity style={styles.Button}>
+          <Text style={{ fontSize: 16, fontWeight: "bold", color: "#fff" }}>
+            SIGN IN
           </Text>
-          <TextInput
-            style={{ height: 70 }}
-            placeholder="Type here ..."
-            alignItems="center"
-            style={{
-              height: 40,
-              borderColor: "gray",
-              borderWidth: 3,
-              paddingRight: 10,
-            }}
-          />
-        </View>
+        </TouchableOpacity>
+      </View>
 
-        <View style={styles.Button}>
-          <Button title="SIGN IN" />
-          <View style={{ paddingTop: 50 }}></View>
-        </View>
+      {/*line in between*/}
+      <View
+        style={{
+          borderBottomColor: "black",
+          borderBottomWidth: 1,
+          left: 5,
+          right: 5,
+          paddingTop: 80,
+        }}
+      />
 
+      <View>
+        <Text
+          style={{
+            fontWeight: "bold",
+            fontSize: 22,
+            textAlign: "center",
+            justifyContent: "center",
+            paddingTop: 25,
+          }}
+        >
+          For New Users and Owners
+        </Text>
+      </View>
+
+      {/* 2nd last button */}
+      <View
+        style={{
+          paddingTop: 20,
+          alignContent: "center",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <TouchableOpacity
           onPress={() => navigation.push("User")}
           style={styles.Button1}
@@ -72,6 +102,17 @@ const SignIn = ({ navigation }) => {
             Register
           </Text>
         </TouchableOpacity>
+      </View>
+
+      {/* last button */}
+      <View
+        style={{
+          paddingTop: 10,
+          alignContent: "center",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <TouchableOpacity
           onPress={() => navigation.push("Admin")}
           style={styles.Button1}
@@ -83,11 +124,12 @@ const SignIn = ({ navigation }) => {
               justifyContent: "center",
             }}
           >
-            Register Admin
+            Register Owner
           </Text>
         </TouchableOpacity>
       </View>
-      <View style={{ paddingTop: 90, paddingBottom: 1 }}>
+
+      <View style={{ paddingTop: 40, paddingBottom: 1 }}>
         <Footer />
       </View>
     </ScrollView>
@@ -97,36 +139,49 @@ const styles = StyleSheet.create({
   Icon: {
     justifyContent: "center",
     textAlign: "center",
-    paddingTop: 200,
+    paddingTop: 30,
     flexDirection: "column",
-    paddingBottom: 20,
+    paddingBottom: 30,
     alignItems: "center",
   },
   Container: {
-    alignItems: "center",
-    flexDirection: "column",
-    justifyContent: "space-evenly",
-    textAlign: "center",
+    padding: 10,
+    flex: 1,
+    paddingBottom: 5,
   },
-  email: {},
-  password: {
+
+  signInButton: {
     paddingTop: 20,
   },
+
   Button: {
-    paddingTop: 20,
-    width: "70%",
-    margin: 5,
+    alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
+    backgroundColor: "#10284e",
+    padding: 12,
+    width: 240,
+    borderRadius: 80,
+    left: 62,
   },
   Button1: {
     paddingTop: 20,
-    width: "70%",
-    margin: 5,
-    borderRadius: 70,
+    width: "60%",
+    margin: 3,
+    borderRadius: 120,
     backgroundColor: "skyblue",
     paddingBottom: 20,
   },
   Register: {
     justifyContent: "center",
+  },
+  TextInput: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 40,
+    textAlign: "center",
   },
 });
 
