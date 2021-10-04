@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   View,
   Text,
@@ -11,171 +11,150 @@ import {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Footer from "../components/Footer";
 
-class Search extends Component {
+export default Search = ({ navigation }) => {
   state = {
     Listings: [],
 
     loading: true,
   };
 
-  render() {
-    return (
-      <SafeAreaView>
-        <ScrollView>
-          <View style={styles.Container}>
-            <View style={{ paddingTop: 0 }}>
-              <View style={styles.body1}>
-                <Text
-                  style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
-                >
-                  KEYWORD:
-                </Text>
-                <TextInput
-                  style={{ height: 70 }}
-                  placeholder="Type here..."
-                  alignItems="center"
-                  style={{
-                    height: 40,
-                    borderColor: "darkblue",
-                    borderWidth: 1,
-                    paddingRight: 20,
-                    borderRadius: 15,
-                  }}
-                />
-              </View>
-              <View style={styles.body2}>
-                <Text
-                  style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
-                >
-                  TOWN:
-                </Text>
-                <TextInput
-                  style={{ height: 70 }}
-                  placeholder="Type here..."
-                  alignItems="center"
-                  justifyContent="center"
-                  style={{
-                    height: 40,
-                    borderColor: "darkblue",
-                    borderWidth: 1,
-                    paddingRight: 20,
-                    borderRadius: 15,
-                  }}
-                />
-              </View>
-              <View style={styles.body3}>
-                <Text
-                  style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
-                >
-                  CITY:
-                </Text>
-                <TextInput
-                  style={{ height: 70 }}
-                  placeholder="Type here..."
-                  alignItems="center"
-                  style={{
-                    height: 40,
-                    borderColor: "darkblue",
-                    borderWidth: 1,
-                    paddingRight: 20,
-                    borderRadius: 15,
-                  }}
-                />
-              </View>
-              <View style={styles.body4}>
-                <Text
-                  style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
-                >
-                  BEDS:
-                </Text>
-                <TextInput
-                  style={{ height: 70 }}
-                  placeholder="Type here..."
-                  alignItems="center"
-                  style={{
-                    height: 40,
-                    borderColor: "darkblue",
-                    borderWidth: 1,
-                    paddingRight: 20,
-                    borderRadius: 15,
-                  }}
-                />
-              </View>
-              <View style={styles.body5}>
-                <Text
-                  style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
-                >
-                  PRICE:
-                </Text>
-                <TextInput
-                  style={{ height: 70 }}
-                  placeholder="Type here..."
-                  style={{
-                    height: 40,
-                    borderColor: "darkblue",
-                    borderWidth: 1,
-                    paddingRight: 20,
-                    borderRadius: 15,
-                  }}
-                />
-              </View>
-              <View style={styles.body6}>
-                <Text
-                  style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
-                >
-                  OTHERS:
-                </Text>
-                <TextInput
-                  style={{ height: 70 }}
-                  placeholder="Type here..."
-                  alignItems="center"
-                  style={{
-                    height: 40,
-                    borderColor: "darkblue",
-                    borderWidth: 1,
-                    paddingRight: 20,
-                    borderRadius: 15,
-                  }}
-                />
-              </View>
+  const [title, settitle] = useState("");
+  return (
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.Container}>
+          <View style={{ paddingTop: 0 }}>
+            <View style={styles.body1}>
+              <Text
+                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
+              >
+                KEYWORD:
+              </Text>
+              <TextInput
+                style={{ height: 70 }}
+                placeholder="Type here..."
+                alignItems="center"
+                onChangeText={(text) => settitle(text)}
+                style={{
+                  height: 40,
+                  borderColor: "darkblue",
+                  borderWidth: 1,
+                  paddingRight: 20,
+                  borderRadius: 15,
+                }}
+              />
+            </View>
+            <View style={styles.body2}>
+              <Text
+                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
+              >
+                TOWN:
+              </Text>
+              <TextInput
+                style={{ height: 70 }}
+                placeholder="Type here..."
+                alignItems="center"
+                justifyContent="center"
+                style={{
+                  height: 40,
+                  borderColor: "darkblue",
+                  borderWidth: 1,
+                  paddingRight: 20,
+                  borderRadius: 15,
+                }}
+              />
+            </View>
+            <View style={styles.body3}>
+              <Text
+                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
+              >
+                CITY:
+              </Text>
+              <TextInput
+                style={{ height: 70 }}
+                placeholder="Type here..."
+                alignItems="center"
+                style={{
+                  height: 40,
+                  borderColor: "darkblue",
+                  borderWidth: 1,
+                  paddingRight: 20,
+                  borderRadius: 15,
+                }}
+              />
+            </View>
+            <View style={styles.body4}>
+              <Text
+                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
+              >
+                BEDS:
+              </Text>
+              <TextInput
+                style={{ height: 70 }}
+                placeholder="Type here..."
+                alignItems="center"
+                style={{
+                  height: 40,
+                  borderColor: "darkblue",
+                  borderWidth: 1,
+                  paddingRight: 20,
+                  borderRadius: 15,
+                }}
+              />
+            </View>
+            <View style={styles.body5}>
+              <Text
+                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
+              >
+                PRICE:
+              </Text>
+              <TextInput
+                style={{ height: 70 }}
+                placeholder="Type here..."
+                style={{
+                  height: 40,
+                  borderColor: "darkblue",
+                  borderWidth: 1,
+                  paddingRight: 20,
+                  borderRadius: 15,
+                }}
+              />
+            </View>
+            <View style={styles.body6}>
+              <Text
+                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
+              >
+                OTHERS:
+              </Text>
+              <TextInput
+                style={{ height: 70 }}
+                placeholder="Type here..."
+                alignItems="center"
+                style={{
+                  height: 40,
+                  borderColor: "darkblue",
+                  borderWidth: 1,
+                  paddingRight: 20,
+                  borderRadius: 15,
+                }}
+              />
+            </View>
 
-              <View style={styles.button}>
-                <Button
-                  color="#10284e"
-                  title="SUBMIT"
-                  onPress={() => {
-                    try {
-                      fetch("http://3.135.209.144:8000/ep/hostels-all", {
-                        method: "GET",
-                        mode: "no-cors",
-                        headers: {
-                          Accept: "application/json",
-                          "Content-Type": "application/json",
-                        },
-                        body: JSON.parse({
-                          title: "IFTI HOSTEL",
-                          city: "ISLAMABAD",
-                          price: "55555",
-                          bathrooms: "5",
-                        })
-                          .then((res) => res.json())
-                          .then((resJson) => {
-                            alert(resJson);
-                          }),
-                      });
-                    } catch (e) {
-                      console.log(e);
-                    }
-                  }}
-                />
-              </View>
+            <View style={styles.button}>
+              <Button
+                color="#10284e"
+                title="SUBMIT"
+                onPress={() => {
+                  navigation.push("SearchData", { title });
+                }}
+              />
             </View>
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    );
-  }
-}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
   Container: {
@@ -236,5 +215,3 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
 });
-
-export default Search;
