@@ -154,6 +154,27 @@ function Account({ navigation }) {
         }}
       />
       <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerTitle: "BETHEK",
+          headerTitleAlign: "left",
+
+          headerStyle: {
+            backgroundColor: "#10284e",
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTintColor: "#fff",
+
+          headerTitleStyle: {
+            color: "#fff",
+            fontWeight: "600",
+            fontSize: 22,
+          },
+        }}
+      />
+      <Stack.Screen
         name="Admin"
         component={RegistrationAdmin}
         options={{
