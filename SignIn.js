@@ -3,6 +3,16 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable quotes */
 
+
+/**
+ *
+ *         Signin
+ *
+ *  react native cli code
+ *
+ */
+
+
 import React, { useState } from "react";
 import {
   View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity,
