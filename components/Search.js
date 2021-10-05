@@ -1,217 +1,218 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
+//import react in our code.
+
 import {
-  View,
   Text,
-  TextInput,
   StyleSheet,
+  View,
+  FlatList,
+  TextInput,
+  ActivityIndicator,
+  Alert,
   ScrollView,
-  Button,
-  SafeAreaView,
 } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Footer from "../components/Footer";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import Data from "../Listings/Data";
+import HomeListings from "../Listings/HomeListings";
 
-export default Search = ({ navigation }) => {
-  state = {
-    Listings: [],
+export default class Search extends Component {
+  constructor(props) {
+    super(props);
+    this.setdata = this.setdata.bind(this);
 
-    loading: true,
+    this.state = {
+      isLoading: true,
+      textcity: "",
+      textlocation: "",
+      texthostel_type: "",
+      dataSource: [],
+      arrayholder: [],
+    };
+  }
+
+  componentDidMount() {
+    return fetch("http://3.135.209.144:8000/ep/hostels-all")
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({
+          isLoading: false,
+          arrayholder: responseJson,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+  SearchCity(textcity) {
+    const Data = this.state.arrayholder.filter(function (item) {
+      const itemData = item.city ? item.city.toUpperCase() : "".toUpperCase();
+
+      const textData = textcity.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+
+    this.setState({
+      textcity: textcity,
+      newData: Data,
+    });
+  }
+  SearchHostel_Type(texthostel_type) {
+    const Data = this.state.arrayholder.filter(function (item) {
+      const itemData = item.hostel_type
+        ? item.hostel_type.toUpperCase()
+        : "".toUpperCase();
+
+      const textData = texthostel_type.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+
+    this.setState({
+      texthostel_type: texthostel_type,
+      newData1: Data,
+    });
+  }
+  Searchlocation(textlocation) {
+    const Data = this.state.arrayholder.filter(function (item) {
+      const itemData = item.location
+        ? item.location.toUpperCase()
+        : "".toUpperCase();
+
+      const textData = textlocation.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+
+    this.setState({
+      textlocation: textlocation,
+      newData2: Data,
+    });
+  }
+  setdata() {
+    this.setState({
+      dataSource: [
+        ...this.state.newData1,
+        ...this.state.newData,
+        this.state.newData2,
+      ],
+    });
+    console.log(this.state.dataSource);
+    // return (
+    //   <FlatList
+    //     data={this.state.dataSource}
+    //     ItemSeparatorComponent={this.ListViewItemSeparator}
+    //     renderItem={(data) => (
+    //       <HomeListings {...data.item} navigation={this.props.navigation} />
+    //     )}
+    //     keyExtractor={(item) => item.name}
+    //     enableEmptySections={true}
+    //     style={{ marginTop: 10 }}
+    //   />
+    // );
+  }
+  ListViewItemSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 0.3,
+          width: "90%",
+          backgroundColor: "#080808",
+        }}
+      />
+    );
   };
-
-  const [title, settitle] = useState("");
-  return (
-    <SafeAreaView>
+  render() {
+    const { dataSource } = this.state;
+    if (this.state.isLoading) {
+      return (
+        <View style={{ flex: 1, paddingTop: 20 }}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
+    return (
       <ScrollView>
-        <View style={styles.Container}>
-          <View style={{ paddingTop: 0 }}>
-            <View style={styles.body1}>
+        <View style={styles.viewStyle}>
+          <TextInput
+            style={styles.textInputStyle}
+            onChangeText={(text) => this.SearchCity(text)}
+            value={this.state.textcity}
+            underlineColorAndroid="transparent"
+            placeholder="Search City"
+          />
+          <View style={{ padding: 10 }} />
+          <TextInput
+            style={styles.textInputStyle}
+            onChangeText={(text) => this.SearchHostel_Type(text)}
+            value={this.state.texthostel_type}
+            underlineColorAndroid="transparent"
+            placeholder="Search Hostel Type"
+          />
+          <View style={{ padding: 10 }} />
+          <TextInput
+            style={styles.textInputStyle}
+            onChangeText={(text) => this.Searchlocation(text)}
+            value={this.state.textlocation}
+            underlineColorAndroid="transparent"
+            placeholder="Search location"
+          />
+          <View style={{ position: "absolute", left: 140, right: 0, top: 193 }}>
+            <TouchableOpacity
+              onPress={this.setdata}
+              // onPress={() => this.props.navigation.push("SearchData")}
+              style={styles.Button1}
+            >
               <Text
-                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
-              >
-                KEYWORD:
-              </Text>
-              <TextInput
-                style={{ height: 70 }}
-                placeholder="Type here..."
-                alignItems="center"
-                onChangeText={(text) => settitle(text)}
                 style={{
-                  height: 40,
-                  borderColor: "darkblue",
-                  borderWidth: 1,
-                  paddingRight: 20,
-                  borderRadius: 15,
+                  color: "white",
+                  textAlign: "center",
+                  justifyContent: "center",
                 }}
-              />
-            </View>
-            <View style={styles.body2}>
-              <Text
-                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
               >
-                TOWN:
+                search
               </Text>
-              <TextInput
-                style={{ height: 70 }}
-                placeholder="Type here..."
-                alignItems="center"
-                justifyContent="center"
-                style={{
-                  height: 40,
-                  borderColor: "darkblue",
-                  borderWidth: 1,
-                  paddingRight: 20,
-                  borderRadius: 15,
-                }}
-              />
-            </View>
-            <View style={styles.body3}>
-              <Text
-                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
-              >
-                CITY:
-              </Text>
-              <TextInput
-                style={{ height: 70 }}
-                placeholder="Type here..."
-                alignItems="center"
-                style={{
-                  height: 40,
-                  borderColor: "darkblue",
-                  borderWidth: 1,
-                  paddingRight: 20,
-                  borderRadius: 15,
-                }}
-              />
-            </View>
-            <View style={styles.body4}>
-              <Text
-                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
-              >
-                BEDS:
-              </Text>
-              <TextInput
-                style={{ height: 70 }}
-                placeholder="Type here..."
-                alignItems="center"
-                style={{
-                  height: 40,
-                  borderColor: "darkblue",
-                  borderWidth: 1,
-                  paddingRight: 20,
-                  borderRadius: 15,
-                }}
-              />
-            </View>
-            <View style={styles.body5}>
-              <Text
-                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
-              >
-                PRICE:
-              </Text>
-              <TextInput
-                style={{ height: 70 }}
-                placeholder="Type here..."
-                style={{
-                  height: 40,
-                  borderColor: "darkblue",
-                  borderWidth: 1,
-                  paddingRight: 20,
-                  borderRadius: 15,
-                }}
-              />
-            </View>
-            <View style={styles.body6}>
-              <Text
-                style={{ paddingBottom: 0, fontWeight: "bold", fontSize: 19 }}
-              >
-                OTHERS:
-              </Text>
-              <TextInput
-                style={{ height: 70 }}
-                placeholder="Type here..."
-                alignItems="center"
-                style={{
-                  height: 40,
-                  borderColor: "darkblue",
-                  borderWidth: 1,
-                  paddingRight: 20,
-                  borderRadius: 15,
-                }}
-              />
-            </View>
-
-            <View style={styles.button}>
-              <Button
-                color="#10284e"
-                title="SUBMIT"
-                onPress={() => {
-                  navigation.push("SearchData", { title });
-                }}
-              />
-            </View>
+            </TouchableOpacity>
           </View>
+          <View style={{ padding: 20 }} />
+          <FlatList
+            data={dataSource}
+            ItemSeparatorComponent={this.ListViewItemSeparator}
+            renderItem={(data) => (
+              <HomeListings {...data.item} navigation={this.props.navigation} />
+            )}
+            keyExtractor={(item) => item.name}
+            enableEmptySections={true}
+            style={{ marginTop: 10 }}
+          />
         </View>
       </ScrollView>
-    </SafeAreaView>
-  );
-};
-
+    );
+  }
+}
 const styles = StyleSheet.create({
-  Container: {
-    borderWidth: 1,
-    paddingTop: 0,
-    paddingBottom: 200,
-  },
-
-  body1: {
-    alignItems: "stretch",
-    justifyContent: "space-evenly",
-    textAlign: "center",
-    flexDirection: "column",
-    padding: 10,
-    paddingTop: 60,
-    borderRadius: 70,
-  },
-  body2: {
-    alignItems: "stretch",
-    justifyContent: "space-evenly",
-    textAlign: "center",
-    flexDirection: "column",
-    padding: 10,
-  },
-  body3: {
-    alignItems: "stretch",
-    justifyContent: "space-evenly",
-    textAlign: "center",
-    flexDirection: "column",
-    padding: 10,
-  },
-  body4: {
-    alignItems: "stretch",
-    justifyContent: "space-evenly",
-    textAlign: "center",
-    flexDirection: "column",
-    padding: 10,
-  },
-  body5: {
-    alignItems: "stretch",
-    justifyContent: "space-evenly",
-    textAlign: "center",
-    flexDirection: "column",
-    padding: 10,
-  },
-  body6: {
-    alignItems: "stretch",
-    justifyContent: "space-evenly",
-    textAlign: "center",
-    flexDirection: "column",
-    padding: 10,
-  },
-  button: {
-    width: "60%",
-    flexDirection: "column",
+  viewStyle: {
     justifyContent: "center",
-    alignSelf: "center",
-    paddingTop: 10,
+    flex: 1,
+    marginTop: 40,
+    padding: 16,
+  },
+  textStyle: {
+    padding: 10,
+  },
+  textInputStyle: {
+    height: 40,
+    borderWidth: 1,
+    paddingLeft: 10,
+    borderRadius: 80,
+    padding: 10,
+    borderColor: "#009688",
+    backgroundColor: "#FFFFFF",
+  },
+  Button1: {
+    padding: 10,
+    width: "50%",
+
+    borderRadius: 80,
+    backgroundColor: "skyblue",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

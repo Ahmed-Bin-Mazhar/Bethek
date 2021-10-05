@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   ScrollView,
   StyleSheet,
+  TextInput,
 } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 import HomeListings from "../Listings/HomeListings";
@@ -14,84 +15,90 @@ import Footer from "./Footer";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 class Home extends PureComponent {
-  state = {
-    Listings: [],
+  constructor(props) {
+    super(props);
 
-    loading: true,
-  };
+    this.state = { isLoading: true, text: "" };
+    this.arrayholder = [];
+  }
 
-  async componentDidMount() {
-    fetch("http://3.135.209.144:8000/ep/hostels-all")
-      .then((res) => res.json())
-      .then((resJson) => {
-        this.setState({ Listings: resJson, loading: false });
+  componentDidMount() {
+    return fetch("http://3.135.209.144:8000/ep/hostels-all")
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState(
+          {
+            isLoading: false,
+            dataSource: responseJson,
+          },
+          function () {
+            this.arrayholder = responseJson;
+          }
+        );
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }
-
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function (item) {
+      const itemData = item.title ? item.title.toUpperCase() : "".toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      dataSource: newData,
+      text: text,
+    });
+  }
+  ListViewItemSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 0.3,
+          width: "90%",
+          backgroundColor: "#fff",
+        }}
+      />
+    );
+  };
   render() {
-    const { Listings, loading } = this.state;
-
-    if (!loading) {
+    if (this.state.isLoading) {
       return (
-        <View>
-          <ScrollView>
-            <View style={styles.header}>
-              <Text style={styles.TopText}>Search for Hostels</Text>
-
-              {/* Search bar    */}
-
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("Search")}
-                style={{
-                  borderRadius: 80,
-                  backgroundColor: "#fff",
-                  position: "absolute",
-                  bottom: 50,
-                  left: 50,
-                  right: 50,
-                  padding: 5,
-                  color: "#A6A6A6",
-                  flexDirection: "row",
-                }}
-              >
-                <EvilIcons
-                  name="search"
-                  size={26}
-                  color="#A6A6A6"
-                  style={{
-                    justifyContent: "flex-start",
-                    alignItems: "center",
-                  }}
-                />
-                <Text style={{ paddingLeft: 40 }}>Type here .........</Text>
-              </TouchableOpacity>
-
-              {/* Search Bar The End  */}
-            </View>
-            <View>
-              <FlatList
-                data={Listings}
-                renderItem={(data) => (
-                  <HomeListings
-                    {...data.item}
-                    navigation={this.props.navigation}
-                  />
-                )}
-                keyExtractor={(item) => item.name}
-              />
-            </View>
-            <View>
-              <Footer />
-            </View>
-          </ScrollView>
+        <View style={{ flex: 1, paddingTop: 0 }}>
+          <ActivityIndicator />
         </View>
       );
-    } else {
-      return <ActivityIndicator size="large" color="#10284e" />;
     }
+    return (
+      <ScrollView>
+        <View style={styles.viewStyle}>
+          <View style={styles.header}>
+            <Text style={styles.TopText}>Search for Hostels</Text>
+            <TextInput
+              style={styles.textInputStyle}
+              onChangeText={(text) => this.SearchFilterFunction(text)}
+              //value={this.state.text}
+              placeholder="Search Here ..."
+            />
+          </View>
+
+          <FlatList
+            data={this.state.dataSource}
+            ItemSeparatorComponent={this.ListViewItemSeparator}
+            renderItem={(data) => (
+              <HomeListings {...data.item} navigation={this.props.navigation} />
+            )}
+            keyExtractor={(item) => item.name}
+            enableEmptySections={true}
+            style={{ marginTop: 10 }}
+          />
+        </View>
+        <Footer />
+      </ScrollView>
+    );
   }
 }
-
 const styles = StyleSheet.create({
   header: {
     padding: 80,
@@ -108,11 +115,27 @@ const styles = StyleSheet.create({
     right: 100,
     top: 13,
   },
-  icon: {
+  viewStyle: {
+    justifyContent: "center",
+    flex: 1,
+    marginTop: 0,
+    padding: 0,
+    backgroundColor: "#fff",
+  },
+  textStyle: {
+    padding: 10,
+  },
+  textInputStyle: {
     position: "absolute",
+    bottom: 50,
     left: 50,
-    top: 0,
+    right: 50,
+    padding: 5,
+    borderWidth: 1,
+    paddingLeft: 10,
+    borderColor: "#009688",
+    backgroundColor: "#fff",
+    borderRadius: 80,
   },
 });
-
 export default Home;

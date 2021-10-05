@@ -231,7 +231,7 @@ function SearchListing() {
         }}
       />
       <Stack.Screen
-        name="SearchData"
+        name="Search Data"
         component={SearchData}
         options={{
           headerTitle: "Search Result",

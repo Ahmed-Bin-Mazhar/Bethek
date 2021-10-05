@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\ahmed\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo-image-picker@~10.2.2
+  C:\Program Files\nodejs\node.exe C:\Users\ahmed\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
 
 PATH: 
   C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\PuTTY\;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\Git\cmd;C:\Users\ahmed\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\ahmed\AppData\Local\Programs\Python\Python39\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\PuTTY\;C:\Users\ahmed\AppData\Local\Microsoft\WindowsApps;C:\Users\ahmed\AppData\Local\Programs\Microsoft VS Code\bin;C:\php;C:\Users\ahmed\AppData\Roaming\npm;C:\Users\ahmed\AppData\Local\Android\Sdk\platform-tools;
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Invariant Violation: could not find a copy of react-native to link in D:\tryApp\bethek\node_modules\react-native-gradient-card-view\node_modules
+  Invariant Violation: could not find a copy of react-native to link in D:\tryApp\Bethek\node_modules\react-native-gradient-card-view\node_modules
       at invariant (C:\Users\ahmed\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:2314:15)
       at PackageLinker.<anonymous> (C:\Users\ahmed\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:48721:7)
       at Generator.next (<anonymous>)
@@ -43,6 +43,7 @@ npm manifest:
       "@react-navigation/stack": "^6.0.7",
       "axios": "^0.21.4",
       "expo": "~42.0.1",
+      "expo-image-picker": "^10.2.3",
       "expo-status-bar": "~1.0.4",
       "prop-types": "^15.7.2",
       "react": "16.13.1",
