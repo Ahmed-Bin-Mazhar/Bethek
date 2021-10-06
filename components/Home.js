@@ -74,13 +74,21 @@ class Home extends PureComponent {
       <ScrollView>
         <View style={styles.viewStyle}>
           <View style={styles.header}>
+            <MaterialCommunityIcons
+              name="filter-outline"
+              size={30}
+              color="#fff"
+              style={{ position: "absolute", right: 18, top: 75 }}
+              onPress={() => this.props.navigation.push("Search")}
+            />
             <Text style={styles.TopText}>Search for Hostels</Text>
+
             <TextInput
               style={styles.textInputStyle}
               onChangeText={(text) => this.SearchFilterFunction(text)}
               //value={this.state.text}
               placeholder="Search Here ..."
-            />
+            ></TextInput>
           </View>
 
           <FlatList

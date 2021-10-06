@@ -111,7 +111,7 @@ function Account({ navigation }) {
         name="Sign In"
         component={SignIn}
         options={{
-          headerTitle: "Account",
+          headerShown: false,
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: "#10284e",
@@ -138,6 +138,7 @@ function Account({ navigation }) {
         name="User"
         component={RegistrationUser}
         options={{
+          headerTitle: "User Registration",
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: "#10284e",
@@ -214,7 +215,7 @@ function SearchListing() {
         name="Search"
         component={Search}
         options={{
-          headerTitle: "Details",
+          headerShown: false,
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: "#10284e",
@@ -345,7 +346,7 @@ function HomeNavigation() {
         name="Search"
         component={Search}
         options={{
-          headerTitle: "Details",
+          headerTitle: "Filter Search",
           headerTitleAlign: "center",
           headerStyle: {
             backgroundColor: "#10284e",
@@ -379,6 +380,7 @@ function Featured() {
             shadowOpacity: 0,
           },
           headerTintColor: "#fff",
+          headerShown: false,
 
           headerTitleStyle: {
             color: "#fff",
@@ -443,7 +445,22 @@ const DrawerNavigator = () => {
       <Drawer.Screen
         name="Featured Listing"
         component={Featured}
-        options={{ headerShown: false }}
+        options={{
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#10284e",
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTintColor: "#fff",
+          headerShown: true,
+
+          headerTitleStyle: {
+            color: "#fff",
+            fontWeight: "600",
+            fontSize: 22,
+          },
+        }}
       />
       <Drawer.Screen
         name="Search"
@@ -462,7 +479,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen
         name="Account"
         component={Account}
-        options={{ headerShown: false }}
+        options={{ headerTitleAlign: "center" }}
       />
 
       <Drawer.Screen
