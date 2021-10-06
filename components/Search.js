@@ -95,18 +95,6 @@ export default class Search extends Component {
       ],
     });
     console.log(this.state.dataSource);
-    // return (
-    //   <FlatList
-    //     data={this.state.dataSource}
-    //     ItemSeparatorComponent={this.ListViewItemSeparator}
-    //     renderItem={(data) => (
-    //       <HomeListings {...data.item} navigation={this.props.navigation} />
-    //     )}
-    //     keyExtractor={(item) => item.name}
-    //     enableEmptySections={true}
-    //     style={{ marginTop: 10 }}
-    //   />
-    // );
   }
   ListViewItemSeparator = () => {
     return (
