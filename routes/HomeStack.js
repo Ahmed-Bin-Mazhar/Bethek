@@ -158,6 +158,7 @@ function Account({ navigation }) {
         name="Home"
         component={Home}
         options={{
+          headerShown: false,
           headerTitle: "BETHEK",
           headerTitleAlign: "left",
 
