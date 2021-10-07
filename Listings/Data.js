@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 
 import {
   Image,
@@ -44,6 +44,36 @@ export default Data = ({ route }) => {
   const owner = route.params.owner;
   const nearby_universities = route.params.nearby_universities;
   const utilities = route.params.utilities;
+
+  const [usercontact, setusercontact] = useState();
+  const [abcdef, setuserid] = useState();
+  const [username, setusername] = useState();
+  useEffect(() => {
+    fetch(`http://3.135.209.144:8000/ep/owners-all/${owner}`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        setuserid(data.user), setusercontact(data.phone);
+        console.log(data.user);
+        fetch(`http://3.135.209.144:8000/ep/pusers-all/${data.user}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            setusername(data.username);
+          });
+      })
+
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  // useEffect(() => {
+  //   console.log(abcdef);
+  //   fetch(`http://3.135.209.144:8000/ep/pusers-all/${abcdef}`)
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       setusername(data.username);
+  //     });
+  // }, []);
 
   return (
     <ScrollView>
@@ -167,10 +197,7 @@ export default Data = ({ route }) => {
         {/* Realtor */}
         <View style={{ paddingTop: 30 }} />
         <View style={styles.realtor}>
-          <Image
-            style={styles.picturerealtor}
-            source={require("../Team-Img/ahmed.png")}
-          />
+          {/* <Image style={styles.picturerealtor} source={userdata.photo} /> */}
           <Text
             style={{
               position: "absolute",
@@ -181,7 +208,7 @@ export default Data = ({ route }) => {
             }}
           >
             {/* {realtor} */}
-            Ahmed Bin Mazhar
+            {username}
           </Text>
           <Text
             style={{ position: "absolute", left: 120, top: 45, fontSize: 14 }}
@@ -203,6 +230,7 @@ export default Data = ({ route }) => {
               paddingRight: 3,
               backgroundColor: "#183563",
             }}
+            onPress={() => Alert.alert(usercontact)}
           >
             <Ionicons name="md-call-sharp" size={28} color="#fff" />
           </TouchableOpacity>

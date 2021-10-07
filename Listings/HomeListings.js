@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   TouchableOpacity,
   Text,
@@ -42,35 +42,39 @@ const HomeListings = ({
       <TouchableOpacity
         style={{ backgroundColor: "transparent" }}
         // onPress={() => navigation.navigate("Data", { name: "AHMED" })}
-        onPress={() =>
-          navigation.navigate("Data", {
-            id,
-            title,
-            location,
-            address,
-            city,
-            zipcode,
-            description,
-            price,
-            seater,
-            bathrooms,
-            hostel_type,
-            available,
-            photo_main,
-            photo_1,
-            photo_2,
-            photo_3,
-            photo_4,
-            photo_5,
-            photo_6,
-            is_published,
-            list_date,
-            owner,
-            nearby_universities,
-            utilities,
-            navigation,
-          })
-        }
+        onPress={() => {
+          navigation.navigate(
+            "Data",
+
+            {
+              id,
+              title,
+              location,
+              address,
+              city,
+              zipcode,
+              description,
+              price,
+              seater,
+              bathrooms,
+              hostel_type,
+              available,
+              photo_main,
+              photo_1,
+              photo_2,
+              photo_3,
+              photo_4,
+              photo_5,
+              photo_6,
+              is_published,
+              list_date,
+              owner,
+              nearby_universities,
+              utilities,
+              navigation,
+            }
+          );
+        }}
       >
         <View style={styles.listItemContainer}>
           <View style={styles.ItemHeader}>
