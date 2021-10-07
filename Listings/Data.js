@@ -10,6 +10,8 @@ import {
   ImageBackgroundBase,
   TouchableOpacity,
   Alert,
+  Linking,
+  Platform,
   Button,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -53,7 +55,7 @@ export default Data = ({ route }) => {
       .then((resp) => resp.json())
       .then((data) => {
         setuserid(data.user), setusercontact(data.phone);
-        console.log(data.user);
+
         fetch(`http://3.135.209.144:8000/ep/pusers-all/${data.user}`)
           .then((resp) => resp.json())
           .then((data) => {
@@ -74,6 +76,16 @@ export default Data = ({ route }) => {
   //       setusername(data.username);
   //     });
   // }, []);
+
+  dialCall = (number) => {
+    let phoneNumber = "";
+    if (Platform.OS === "android") {
+      phoneNumber = `tel:${number}`;
+    } else {
+      phoneNumber = `telprompt:${number}`;
+    }
+    Linking.openURL(phoneNumber);
+  };
 
   return (
     <ScrollView>
@@ -197,7 +209,10 @@ export default Data = ({ route }) => {
         {/* Realtor */}
         <View style={{ paddingTop: 30 }} />
         <View style={styles.realtor}>
-          {/* <Image style={styles.picturerealtor} source={userdata.photo} /> */}
+          <Image
+            style={styles.picturerealtor}
+            source={require("../Team-Img/User.png")}
+          />
           <Text
             style={{
               position: "absolute",
@@ -207,7 +222,6 @@ export default Data = ({ route }) => {
               fontWeight: "700",
             }}
           >
-            {/* {realtor} */}
             {username}
           </Text>
           <Text
@@ -230,7 +244,7 @@ export default Data = ({ route }) => {
               paddingRight: 3,
               backgroundColor: "#183563",
             }}
-            onPress={() => Alert.alert(usercontact)}
+            onPress={() => this.dialCall(usercontact)}
           >
             <Ionicons name="md-call-sharp" size={28} color="#fff" />
           </TouchableOpacity>
