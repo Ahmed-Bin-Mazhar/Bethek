@@ -7,7 +7,7 @@ export default class Footer extends Component {
     return (
       <View>
         <View style={styles.footer}>
-          <MaterialCommunityIcons name="home" size={100} color="#fff" />
+          <MaterialCommunityIcons name="home" size={50} color="#fff" />
           <Text
             style={{
               fontSize: 20,
@@ -25,10 +25,11 @@ export default class Footer extends Component {
             contact directly with the proprietor/owner to lock the idea.
           </Text>
         </View>
-        {/* MainFOOTER BAR */}
+        {/* MainFOOTER BAR 
         <View style={styles.mainfooter}>
           <Text style={{ color: "#fff" }}>Copyright © 2021 AAA PAK</Text>
         </View>
+        */}
       </View>
     );
   }
@@ -37,7 +38,7 @@ export default class Footer extends Component {
 const styles = StyleSheet.create({
   footer: {
     backgroundColor: "#20c997",
-    height: 210,
+    height: 150,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -52,6 +53,6 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     color: "#fff",
     width: 375,
-    height: 100,
+    height: 75,
   },
 });

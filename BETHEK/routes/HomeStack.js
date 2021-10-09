@@ -2,29 +2,21 @@ import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItemList,
-  headerStyle,
 } from "@react-navigation/drawer";
+
 import { NavigationContainer } from "@react-navigation/native";
-import * as React from "react";
-import { Ionicons } from "@expo/vector-icons";
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Button,
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-} from "react-native";
+
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import * as React from "react";
+import { View, Text } from "react-native";
 import Home from "../components/Home";
 import Aboutus from "../components/Aboutus";
 import ContactUs from "../components/Contact-us";
 import Search from "../components/Search";
-
+import Data from "../Listings/Data";
 import Feature from "../components/Featured";
-import SignIn from "../components/SignIn";
+
+import { createStackNavigator } from "@react-navigation/stack";
 
 const Drawer = createDrawerNavigator();
 
@@ -38,48 +30,23 @@ const CustomDrawer = (props) => {
             justifyContent: "space-between",
             alignItems: "center",
             justifyContent: "center",
-            padding: 40,
+            padding: 50,
             backgroundColor: "#10284e",
             marginBottom: 20,
             marginTop: 0,
           }}
         >
-          <Image
-            source={require("../Team-Img/ahmed.png")}
-            style={{ width: 60, height: 60, borderRadius: 30 }}
-          />
           <View>
-            <Text style={{ paddingTop: 5, color: "#fff" }}>
-              Ahmed Bin Mazhar
-            </Text>
+            <MaterialCommunityIcons name="home" size={35} color="#fff">
+              <Text style={{ paddingTop: 5, color: "#fff", fontSize: 28 }}>
+                Bethek
+              </Text>
+            </MaterialCommunityIcons>
           </View>
         </View>
-
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
 
-      <TouchableOpacity
-        style={{
-          position: "absolute",
-          right: 0,
-          left: 0,
-          bottom: 50,
-          backgroundColor: "#10284e",
-          padding: 30,
-          flexDirection: "column",
-
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Text
-          style={{
-            color: "#fff",
-          }}
-        >
-          Log Out
-        </Text>
-      </TouchableOpacity>
       <View
         style={{
           backgroundColor: "#10284e",
@@ -96,6 +63,173 @@ const CustomDrawer = (props) => {
     </View>
   );
 };
+const Stack = createStackNavigator();
+
+function SearchListing() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{
+          headerShown: false,
+
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#10284e",
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTintColor: "#fff",
+
+          headerTitleStyle: {
+            color: "#fff",
+            fontWeight: "600",
+            fontSize: 22,
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="Data"
+        component={Data}
+        options={{
+          headerTitle: "Details",
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#10284e",
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTintColor: "#fff",
+
+          headerTitleStyle: {
+            color: "#fff",
+            fontWeight: "600",
+            fontSize: 22,
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function HomeNavigation() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerTitle: "BETHEK",
+          headerTitleAlign: "left",
+
+          headerStyle: {
+            backgroundColor: "#10284e",
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTintColor: "#fff",
+
+          headerTitleStyle: {
+            color: "#fff",
+            fontWeight: "600",
+            fontSize: 22,
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="Data"
+        component={Data}
+        options={{
+          headerTitle: "Details",
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#10284e",
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTintColor: "#fff",
+
+          headerTitleStyle: {
+            color: "#fff",
+            fontWeight: "600",
+            fontSize: 22,
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{
+          headerTitle: "Filter Search",
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#10284e",
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTintColor: "#fff",
+
+          headerTitleStyle: {
+            color: "#fff",
+            fontWeight: "600",
+            fontSize: 22,
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function Featured() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Featured Items"
+        component={Feature}
+        options={{
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#10284e",
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTintColor: "#fff",
+          headerShown: false,
+
+          headerTitleStyle: {
+            color: "#fff",
+            fontWeight: "600",
+            fontSize: 22,
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Data"
+        component={Data}
+        options={{
+          headerTitle: "Details",
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#10284e",
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTintColor: "#fff",
+
+          headerTitleStyle: {
+            color: "#fff",
+            fontWeight: "600",
+            fontSize: 22,
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 const DrawerNavigator = () => {
   return (
@@ -119,12 +253,37 @@ const DrawerNavigator = () => {
       drawerContent={(props) => <CustomDrawer {...props} />}
     >
       <Drawer.Screen
-        component={Home}
+        component={HomeNavigation}
         name="Home"
         options={{
-          headerTitle: "BETHEK",
+          headerShown: true,
           headerTitleAlign: "center",
         }}
+      />
+      <Drawer.Screen
+        name="Featured Listing"
+        component={Featured}
+        options={{
+          headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: "#10284e",
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTintColor: "#fff",
+          headerShown: true,
+
+          headerTitleStyle: {
+            color: "#fff",
+            fontWeight: "600",
+            fontSize: 22,
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Search"
+        component={SearchListing}
+        options={{ headerTitleAlign: "center" }}
       />
 
       <Drawer.Screen
@@ -135,21 +294,6 @@ const DrawerNavigator = () => {
       <Drawer.Screen
         name="Contact US"
         component={ContactUs}
-        options={{ headerTitleAlign: "center" }}
-      />
-      <Drawer.Screen
-        name="Featured Listing"
-        component={Feature}
-        options={{ headerTitleAlign: "center" }}
-      />
-      <Drawer.Screen
-        name="Search"
-        component={Search}
-        options={{ headerTitleAlign: "center" }}
-      />
-      <Drawer.Screen
-        name="Account"
-        component={SignIn}
         options={{ headerTitleAlign: "center" }}
       />
     </Drawer.Navigator>
@@ -165,5 +309,3 @@ export default class HomeStack extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({});

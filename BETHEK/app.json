@@ -4,9 +4,9 @@
     "slug": "BETHEK",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./Team-Img/BETHEK.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./Team-Img/BETHEK.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,9 +21,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./Team-Img/BETHEK.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.ahmedbinmazhar.BETHEK"
     },
     "web": {
       "favicon": "./assets/favicon.png"
